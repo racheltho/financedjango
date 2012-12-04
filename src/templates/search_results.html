@@ -1,0 +1,19 @@
+{% extends "baseRT.html" %}
+
+
+{% block branding %}
+<p>You searched for: <strong>{{ query }}</strong></p>
+{% endblock %}
+
+{% block content %}
+{% if advertisers %}
+    <p>Found {{ advertisers|length }} advertiser{{ advertisers|pluralize }}.</p>
+    <ul>
+        {% for advertiser in advertisers %}
+        <li>{{ advertiser.advertiser }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No advertisers matched your search criteria.</p>
+{% endif %}
+{% endblock %}

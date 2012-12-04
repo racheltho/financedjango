@@ -14,6 +14,7 @@ urlpatterns = patterns('FinanceDjango.views',
     ('^contact/$', 'contact'),      
 #    (r'^search-form/$', search_form),
     (r'^search/$', 'search'),
+    (r'^rev/$', 'revenue'),
     url(r'^admin/', include(admin.site.urls)),
 )
 

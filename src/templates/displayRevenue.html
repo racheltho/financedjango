@@ -1,0 +1,39 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block extrastyle %}
+	<link rel="stylesheet" type="text/css" href="/media/css/table.css" />
+{% endblock %}
+
+
+{% load currency %}
+
+{% block content %}
+{% regroup actual_list by campaign as campaign_items %}
+
+
+<table>
+<tr>
+	<td> Campaign Name </td>
+	
+{% for date_item in date_list %}
+<td> {{ date_item|date:'M-y'}} </td>
+{% endfor %}
+</tr>
+{% for campaign in campaign_items %}    
+  <tr>
+    <td>{{ campaign.grouper }}</td>
+    {% for date_item in date_list %}
+    	<td align="right">
+    	{% for campaign in campaign.list %}
+    		{% if campaign.date == date_item %}
+      			{{ campaign.actualRev|currency }}
+      		{% endif %}
+      	{% endfor %}
+      	</td>
+    {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

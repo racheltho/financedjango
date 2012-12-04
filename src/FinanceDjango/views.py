@@ -5,17 +5,25 @@
 from django.shortcuts import render_to_response
 from forms import ContactForm
 
-from finance.models import Advertiser
+from finance.models import Advertiser, Actual, Campaign
 from django.http import HttpResponse, Http404
 import datetime
 
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
-from django.template import RequestContext
+from django.template import RequestContext, Context
+
 
 def hello(request):   
     return render_to_response('learning.html')
 
+def revenue(request):
+    actual_list = Actual.objects.all()[:200]
+    date_list = []
+    for year in range(2011,2013):
+        for month in range(1,13):
+            date_list.append(datetime.date(year, month, 1))
+    return render_to_response('displayRevenue.html', {'actual_list': actual_list, 'date_list' : date_list, 'title': 'Actual Revenue', })
 #    return HttpResponse("Quantcast: Measure + Advertise")
 
 

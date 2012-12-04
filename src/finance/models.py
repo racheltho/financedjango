@@ -83,6 +83,8 @@ class Campaign(models.Model):
     revised_deal = models.DecimalField(max_digits=18, decimal_places=2, null=True, blank=True)
     def __unicode__(self):
         return self.campaign
+    def __str__(self):
+        return self.campaign
     def get_absolute_url(self):
         return u"/note/%s/" % self.campaign
 

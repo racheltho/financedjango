@@ -1,4 +1,2 @@
-Rachel's Amazing Django Project
+Django Project: Finance Database
 =============
-
-It is said (correctly) that this will revolutionize finance as we know it.

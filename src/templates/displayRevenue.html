@@ -9,28 +9,26 @@
 {% load currency %}
 
 {% block content %}
-{% regroup actual_list by campaign as campaign_items %}
+<!---{% regroup actual_list by campaign as campaign_items %} -->
 
 
 <table>
 <tr>
-	<td> Campaign Name </td>
+	<th> Campaign Name </th>
 	
 {% for date_item in date_list %}
-<td> {{ date_item|date:'M-y'}} </td>
+<th> {{ date_item|date:'M-y'}} </th>
 {% endfor %}
 </tr>
-{% for campaign in campaign_items %}    
+{% for rev_obj in obj_list %}  
   <tr>
-    <td>{{ campaign.grouper }}</td>
-    {% for date_item in date_list %}
+    <td><a href="/admin/finance/campaign/{{ rev_obj.id }}/">{{ rev_obj.name }}</a></td>
+    {% for rev in rev_obj.rev_list %}
     	<td align="right">
-    	{% for campaign in campaign.list %}
-    		{% if campaign.date == date_item %}
-      			{{ campaign.actualRev|currency }}
-      		{% endif %}
-      	{% endfor %}
-      	</td>
+    		{% if rev != 0 %}
+          		{{ rev|currency }}
+          	{% endif %}
+    	</td>
     {% endfor %}
   </tr>
 {% endfor %}

@@ -8,3 +8,51 @@ td, th {
     padding: 5px;
     font-family: "Lucida Grande", Verdana, Arial, sans-serif;
 }
+
+
+thead th,
+tfoot td {
+    color: #666;
+    padding: 2px 5px;
+    font-size: 11px;
+    background: #e1e1e1 url(../img/nav-bg.gif) top left repeat-x;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+table#change-history {
+    width: 10px;
+}
+
+#container {
+    position: relative;
+    width: 760px;
+    min-width: 760px;
+    padding: 0;
+}
+
+#header {
+    width: 400px;
+}
+
+#content-main {
+    float: left;
+    width: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+

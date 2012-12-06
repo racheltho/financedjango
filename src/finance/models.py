@@ -87,24 +87,35 @@ class Campaign(models.Model):
         return self.campaign
     def get_absolute_url(self):
         return u"/note/%s/" % self.campaign
-
+    def getBookedRev(self, myDate):
+        a = self.booked_set.filter(date = myDate)
+        if a:
+            return a[0].bookedRev
+        else:  
+            return 0
+    def getActualRev(self, myDate):
+        a = self.actual_set.filter(date = myDate)
+        if a:
+            return a[0].actualRev
+        else:  
+            return 0
 
 class Booked(models.Model):
     campaign = models.ForeignKey(Campaign)
     date = models.DateField()
-    bookedRev = models.DecimalField(max_digits=14, decimal_places = 2)
+    bookedRev = models.DecimalField(max_digits=14, decimal_places = 2, unique_for_date = "date")
     def __unicode__(self):
-        return self.bookedRev
+        return str(self.bookedRev)
     
        
 class Actual(models.Model):
     campaign = models.ForeignKey(Campaign)
     date = models.DateField()    
-    actualRev = models.DecimalField(max_digits=14, decimal_places = 2)    
+    actualRev = models.DecimalField(max_digits=14, decimal_places = 2, unique_for_date = "date")    
     def __unicode__(self):
         return str(self.actualRev)
     def __str__(self):
-        return self.actualRev
+        return str(self.actualRev)
 
 class CampaignForm(forms.ModelForm):       
     class Meta:

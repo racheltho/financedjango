@@ -3,26 +3,31 @@ from django.forms.formsets import formset_factory
 from finance.models import Campaign
 import datetime
     
-def make_date_form(start_date, end_date):
-    date_list = []
-    for year in range(2011,2013):
-        for month in range(1,13):
-            date_list.append(datetime.date(year, month, 1))
-    fields = {}
-    counter = 0
-    for d in date_list:
-        counter = counter + 1
-        i = str(counter)
-        fields[i+'_date'] = forms.DateField(d)
-        fields[i+'_booked'] = forms.DecimalField(max_digits=14, decimal_places = 2)          
-    return type('date_booked', (forms.BaseForm,), { 'base_fields': fields })               
-            
     
-class Calculator(forms.Form):
+class CalculatorForm(forms.ModelForm):
+    numberDays = forms.IntegerField()
+    
     class Meta:
         model = Campaign
-        fields = ('campaign','start_date','end_date','contracted_deal','revised_deal')
-    
+        fields = ['campaign', 'start_date', 'end_date','repId','contracted_impr', 'contracted_deal', 'revised_deal', 'product','channel', 'cp']
+        #fields = ('campaign','start_date','end_date', 'revised_deal')
+        
+    extra_field_count = forms.CharField(widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        extra_fields = kwargs.pop('extra', 0)
+
+        super(CalculatorForm, self).__init__(*args, **kwargs)
+        
+        self.fields['extra_field_count'].initial = extra_fields
+
+        for index in range(extra_fields):
+            # generate extra fields in the number specified via extra_fields
+            self.fields['extra_field_{index}'.format(index=index)] = \
+                forms.DecimalField()
+        
+        
+        
     
 class ContactForm(forms.Form):
     subject = forms.CharField(max_length=100)

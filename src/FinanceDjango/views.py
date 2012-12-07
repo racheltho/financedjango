@@ -2,8 +2,8 @@
 
 #from django.template.loader import get_template
 #from django.template import Context
-from django.shortcuts import render_to_response
-from forms import ContactForm
+from django.shortcuts import render_to_response, render
+from forms import ContactForm, CalculatorForm
 
 from finance.models import Advertiser, Actual, Campaign
 from django.http import HttpResponse, Http404
@@ -12,6 +12,16 @@ import datetime
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.template import RequestContext, Context
+
+
+def calculatorView(request):
+    if request.method == 'POST':
+        form = CalculatorForm(request.POST, extra=request.POST.get('extra_field_count'))
+        if form.is_valid():
+            print "valid!"
+    else:
+        form = CalculatorForm()
+    return render(request, "calculator.html", { 'form': form })
 
 
 def hello(request):   

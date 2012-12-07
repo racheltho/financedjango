@@ -17,6 +17,7 @@ urlpatterns = patterns('FinanceDjango.views',
     (r'^booked/$', 'bookedRev'),
     (r'^actual/$', 'actualRev'),    
     (r'^add_poll/$', 'add_poll'),
+    (r'^calculator/$', 'calculatorView'),
     url(r'^admin/', include(admin.site.urls)),
 )
 

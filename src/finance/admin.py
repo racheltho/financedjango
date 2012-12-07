@@ -1,5 +1,6 @@
 from django.contrib import admin
 from finance.models import Campaign, Advertiser, Rep, CampaignForm, Actual, Booked
+from FinanceDjango.forms import CalculatorForm
 import copy  # (1) use python copy
 
 from django.utils.translation import ugettext_lazy as _
@@ -8,8 +9,6 @@ import string
 
 from django.forms import TextInput, Textarea
 from django.db import models
-
-
 
 
 def advertiserAlphabetFilter(myTitle, parameter):
@@ -118,9 +117,9 @@ class CampaignRevAdmin(admin.ModelAdmin):
     parameter = 'campaign'
     list_filter = (campaignAlphabetFilter(title,parameter),)
     inlines = [BookedAdmin, ActualAdmin,]    
+    form = CalculatorForm
 
-class CampaignAdmin(admin.TabularInline):
-   
+class CampaignAdmin(admin.TabularInline):   
     model = Campaign
     fields = ['campaign', 'start_date', 'end_date','repId', 'contracted_impr', 'contracted_deal', 'revised_deal', 'product','channel', 'cp']
     form = CampaignForm
@@ -138,9 +137,12 @@ class AdvertiserAdmin(admin.ModelAdmin):
 #    class Media:
 #        js = ('/media/javascript/myJS.js',)
 
+class CalculatorAdmin(admin.ModelAdmin):
+    model = Campaign
 
 
 admin.site.register(Advertiser, AdvertiserAdmin)
 #admin.site.register(Actual, RevenueAdmin)
 admin.site.register(Campaign, CampaignRevAdmin)
+#admin.site.register(Campaign, CalculatorAdmin)
 

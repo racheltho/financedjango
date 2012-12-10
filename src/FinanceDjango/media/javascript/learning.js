@@ -28,7 +28,6 @@ else
   }
 }
 
-
 function myFunction(box)
 {
 var x=document.getElementById(box).value;
@@ -40,4 +39,19 @@ if(x==""||isNaN(x))
 
 
 
+function myAddition(pid)
+{
+var y=5;
+var x=y+2;
+document.getElementById(pid).innerHTML="x=" + x;
+}
 
+function mOver(obj)
+{
+obj.innerHTML="Thank You"
+}
+
+function mOut(obj)
+{
+obj.innerHTML="Mouse Over Me"
+}

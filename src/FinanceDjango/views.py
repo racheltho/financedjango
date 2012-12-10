@@ -24,8 +24,6 @@ def calculatorView(request):
     return render(request, "calculator.html", { 'form': form })
 
 
-def hello(request):   
-    return render_to_response('learning.html')
 
 def actualRev(request):
     campaign_list = Campaign.objects.order_by('campaign')[50:100]
@@ -118,9 +116,17 @@ def display_meta(request):
     return HttpResponse('<table>%s</table>' % '\n'.join(html))
 
 
+
 def current_datetime(request):
     now = datetime.datetime.now()
     return render_to_response('current_datetime.html', {'current_date': now})
+
+def learning(request):
+    return render_to_response('learning.html')
+
+def hello(request):   
+    return render_to_response('index.html')
+
 
 
 def hours_ahead(request, offset):

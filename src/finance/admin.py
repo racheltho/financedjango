@@ -9,6 +9,7 @@ import string
 
 from django.forms import TextInput, Textarea
 from django.db import models
+from django import forms
 
 
 def advertiserAlphabetFilter(myTitle, parameter):
@@ -98,10 +99,10 @@ def copy_campaign(modeladmin, request, queryset):
 
 class ActualAdmin(admin.TabularInline):
     model = Actual  
-    formfield_overrides = {
-        models.DecimalField: {'widget': TextInput(attrs={'size':'10'})},
-        #models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},
-    }
+#    formfield_overrides = {
+#        models.DecimalField: {'widget': TextInput(attrs={'size':'10'})},
+#        #models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},
+#    }
 
  
 class BookedAdmin(admin.TabularInline):
@@ -110,7 +111,7 @@ class BookedAdmin(admin.TabularInline):
 class CampaignRevAdmin(admin.ModelAdmin):
     model = Campaign
     ordering = ['campaign']
-    fields = [('campaign', 'start_date', 'end_date','repId','contracted_impr', 'contracted_deal', 'revised_deal', 'product','channel', 'cp'),]
+#    fields = [('campaign', 'start_date', 'end_date','repId','contracted_impr', 'contracted_deal', 'revised_deal', 'product','channel', 'cp'),]
 #    list_display = ('advertiser', 'industry')
     search_fields = ('campaign',)
     title = 'Campaign- First Letter'
@@ -119,6 +120,8 @@ class CampaignRevAdmin(admin.ModelAdmin):
     inlines = [BookedAdmin, ActualAdmin,]    
     form = CalculatorForm
 
+    
+    
 class CampaignAdmin(admin.TabularInline):   
     model = Campaign
     fields = ['campaign', 'start_date', 'end_date','repId', 'contracted_impr', 'contracted_deal', 'revised_deal', 'product','channel', 'cp']

@@ -12,26 +12,47 @@
 	
 <script type="text/javascript" src="/media/javascript/learning.js"></script>
 
+
 </head>
 <body>
+<div id="wrapper" class="container">
+	<h1>Practicing JavaScript</h1>
+	<p></p>
+	<p></p>
+	<p id="demo">Quantcast: Measure + Advertise</p>
 
-<h1>Practicing JavaScript</h1>
-<p id="demo">Quantcast: Measure + Advertise</p>
+	<button type="button" onclick="displayDate('demo')">Date and Time</button>
 
-<button type="button" onclick="displayDate('demo')">Date and Time</button>
+	<button type="button" onclick="welcome('demo')">Say Hello</button>
 
-<button type="button" onclick="welcome('demo')">Say Hello</button>
-
-<p>Please input a number.</p>
-<p> <input id="d2" type="text"> <button type="button" onclick="myFunction('d2')">Submit</button> </p>
+	<p>Please input a number.</p>
+		<p> <input id="d2" type="text"> <button type="button" onclick="myFunction('d2')">Submit</button> </p>
 	
-<p>
-<img id="myimage" onclick="changeImage('myimage')"
-src="/media/images/wiredQC.gif" width="500" height="70">
-</p>
+	<p>
+		<img id="myimage" onclick="changeImage('myimage')"
+		src="/media/images/wiredQC.gif" width="500" height="70">
+	</p>
+	
+	<p>Given that y=5, calculate x=y+2, and display the result.</p>
 
+	<p id="yplus2"> Here </p>
+	
+	<button type="button" onclick="myAddition('yplus2')"> Try it </button>
+	
+	<div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:#D94A38;width:120px;height:20px;padding:40px;">Mouse Over Me</div>
 
+	
+	
+	<p>If you click on me, I will disappear.</p>
+	<p>Click me away!</p>
+	<p>Click me too!</p>
+	
+	
+	<div id="footer">
+		<p>Copyright (c) 2012 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
+	</div>
 
+</div>
 
 
 </body>

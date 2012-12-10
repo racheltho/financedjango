@@ -11,7 +11,7 @@ class CalculatorForm(forms.ModelForm):
         model = Campaign
         fields = ['campaign', 'start_date', 'end_date','repId','contracted_impr', 'contracted_deal', 'revised_deal', 'product','channel', 'cp']
         #fields = ('campaign','start_date','end_date', 'revised_deal')
-        
+
     extra_field_count = forms.CharField(widget=forms.HiddenInput())
 
     def __init__(self, *args, **kwargs):

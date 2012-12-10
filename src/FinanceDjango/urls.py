@@ -7,9 +7,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('FinanceDjango.views',
     # Examples:
-    (r'^time/plus/(\d{1,2})/$', 'hours_ahead'),
     ('^$', 'hello'),
+    ('^learning/$', 'learning'),       
     ('^time/$', 'current_datetime'),
+    (r'^time/plus/(\d{1,2})/$', 'hours_ahead'),
     ('^meta/$', 'display_meta'),
     ('^contact/$', 'contact'),      
 #    (r'^search-form/$', search_form),
@@ -22,6 +23,7 @@ urlpatterns = patterns('FinanceDjango.views',
 )
 
 urlpatterns += patterns('',
+                     
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT }),
 #    (r'^', include('FinanceDjango.urls')),
 )

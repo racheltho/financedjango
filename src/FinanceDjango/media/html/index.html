@@ -1,49 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" ng-app ng-controller="CampListCtrl">
+<html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title ng-bind-template="QC Reps: {{query}}"> Quantcast Reps </title>
+  <title> Quantcast </title>
   <link rel="stylesheet" href="/media/css/app.css">
   <link rel="stylesheet" href="/media/css/bootstrap.css">
   <script type="text/javascript" src="/media/lib/angular/angular.js"></script>
   <script type="text/javascript" src="/media/javascript/controllers.js"></script>
+  <script src="/media/javascript/app.js"></script>
+  <script src="/media/javascript/filters.js"></script>
   
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span2">
-        <!--Sidebar content-->
-        Search: <input ng-model="query">
-		Sort by:
-		<select ng-model="orderProp">
-		<option value="fields.campaign">Campaign</option>
-		<option value="fields.type">Type</option>
-		<option value="fields.product">Product</option>
-		<option value="fields.channel">Channel</option>		
-		<option value="fields.advertiser">Advertiser</option>
-		<option value="fields.rep">Rep</option>
-		</select>
-		
-      </div>
-      <div class="span20">
-        <!--Body content-->
-        <div class="reps">
-		<table>
-		<tr><th>Campaign</th><th>Type</th><th>Product</th><th>Channel</th><th>Advertiser</th><th>Rep ID</th><th>Start Date</th><th>End Date</th>
-			<th>CPM Price</th><th>Contracted Impressions</th><th>Contracted Deal</th><th>Revised Deal</th></tr>
-		<tr ng-repeat="c in campaigns | filter:query | orderBy:orderProp">
-			<td> <a href="#/campaigns/{{c.pk}}"> {{c.fields.campaign}}</a> </td> <td>{{c.fields.type}} </td><td>{{c.fields.product}} </td><td>{{c.fields.channel}}</td>
-			<td> {{c.fields.advertiser}} </td> <td>{{c.fields.repId}} </td><td>{{c.fields.cp}} </td><td>{{c.fields.start_date}}</td><td>{{c.fields.end_date}}</td>
-			<td> {{c.fields.cpm_price}} </td> <td>{{c.fields.contracted_impr}} </td><td>{{c.fields.contracted_deal}} </td><td>{{c.fields.revised_deal}}</td>
-			</tr>
-		</table>
-        </div>
-      </div>
-    </div>
-</div>
-
-  <p>Total number of Campaigns: {{campaigns.length}} </p>
+	<div ng-view></div>
+	<input ng-model="userInput"> Uppercased: {{ userInput | uppercase }}
 
 </body>
 

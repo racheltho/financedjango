@@ -1,0 +1,12 @@
+<h1> {{ campaignId }}   </h1> 
+
+<div class="specs">
+	<table>
+		<tr><th>Checkmark</th><th>Date</th><th>Actual Revenue</th></tr>
+	<tr ng-repeat="a in actuals | orderBy:orderProp">
+		<td> {{ a.fields.date | checkmark }} </td><td> {{ a.fields.date | date:"MMM-yy" }} </td><td align='right'> {{ a.fields.actualRev | currency }} </td>
+		</tr>
+	</table>
+</div>
+
+ <button ng-click="hello('Rachel')">Hello</button>

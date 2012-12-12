@@ -29,7 +29,16 @@ function CampListCtrl($scope, $http) {
 	$scope.orderProp = 'fields.campaign';
  }
  
-RepListCtrl.$inject = ['$scope', '$http'];
+function CampActualCtrl($scope, $routeParams, $http){
+	$http.get('/media/json/actual' + $routeParams.campaignId + '.json').success(function(data) {
+    	$scope.actuals = data;
+  	});
+  	$scope.orderProp = 'fields.date';
+ 	$scope.campaignId = $routeParams.campaignId;
+ 	$scope.hello = function(name) {
+      alert('Hello ' + (name || 'world') + '!');
+  };
+}
 
 
 
@@ -55,28 +64,3 @@ function RepListCtrl($scope) {
 */
 
  
-/* 
-function RepListCtrl($scope) {
-  $scope.reps = [
-    {"repId": "RK",
-	 "first_name": "Richard J.",
-	 "last_name": "Kosinski",
-     "date_of_hire": "2011-03-09"},
-    {"repId": "VM",
-	 "first_name": "Vincent",
-	 "last_name": "McEntee",
-     "date_of_hire": "2009-03-30"},
-	{"repId": "DJ",
-	 "first_name": "David",
-	 "last_name": "Julian",
-     "date_of_hire": "2010-07-28"},
-	{"repId": "PM",
-	 "first_name": "Phil",
-	 "last_name": "Macauley",
-     "date_of_hire": "2010-06-07"}, 
-  ];
-  
-  $scope.orderProp = 'date_of_hire';
-  
-}
-*/

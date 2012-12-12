@@ -1,0 +1,1 @@
+[{"pk": 888, "model": "finance.actual", "fields": {"date": "2012-07-01", "actualRev": "9150.00", "campaign": 312}}, {"pk": 887, "model": "finance.actual", "fields": {"date": "2012-06-01", "actualRev": "2160.00", "campaign": 312}}]

@@ -10,16 +10,7 @@ function MyCtrl2() {
 }
 MyCtrl2.$inject = [];
 
-/*
-function RepListCtrl($scope, $http) {
-	$http.get('/media/javascript/rep.json').success(function(data) {
-		$scope.reps = data;
-	});
-	$scope.orderProp = 'pk';
- }
- 
-RepListCtrl.$inject = ['$scope', '$http'];
-*/
+
 
 
 function CampListCtrl($scope, $http) {
@@ -41,6 +32,17 @@ function CampActualCtrl($scope, $routeParams, $http){
 }
 
 
+
+/*
+function RepListCtrl($scope, $http) {
+	$http.get('/media/javascript/rep.json').success(function(data) {
+		$scope.reps = data;
+	});
+	$scope.orderProp = 'pk';
+ }
+ 
+RepListCtrl.$inject = ['$scope', '$http'];
+*/
 
 /*
 var myApp = angular.module('myApp', [], function($interpolateProvider) {

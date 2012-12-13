@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:ng="http://angularjs.org">
+<head>
+<title>Angular Cellar</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+ 
+<body ng:controller="CampListCtrl">
+ 
+<div id="header">
+    Quantcast Campaigns
+    <button ng:click="addCampaign()">New Campaign</button>
+    <button ng:click="copyCampaign()">Copy Existing Campaign</button>
+</div>
+ 
+<div id="sidebar">
+    <ng:include src="'/media/templates/campaign-list-sidebar.html'"></ng:include>
+</div>
+ 
+<div id="content">
+    <ng:view></ng:view>
+</div>
+ 
+<script src="lib/angular-0.9.19.min.js" ng:autobind></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+ 
+</body>
+ 
+</html>

@@ -1,6 +1,12 @@
 'use strict';
 
 /* Services */
+angular.module('myAppServices', ['ngResource']).
+    factory('Campaign', function($resource){
+  return $resource('json/actual:campaignId.json', {}, {
+    query: {method:'GET', params:{campaignId:'campaigns'}, isArray:true}
+  });
+});
 
 
 // Demonstrate how to register services

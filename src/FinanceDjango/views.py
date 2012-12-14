@@ -5,7 +5,7 @@
 from django.shortcuts import render_to_response, render
 from forms import ContactForm, CalculatorForm
 
-from finance.models import Advertiser, Actual, Campaign
+from finance.models import Advertiser, Actual, Campaign, Type, Product, Rep, Channel, CP
 from django.http import HttpResponse, Http404
 import datetime
 
@@ -13,6 +13,44 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.template import RequestContext, Context
 
+from django.core import serializers
+import string
+
+def getCampaigns(request):
+    campaign_list = Campaign.objects.all()
+    data = serializers.serialize('json',campaign_list)
+    return HttpResponse(data, mimetype='application/json')
+    
+def getActuals(request, camp_id):       
+    actual_list = Actual.objects.filter(campaign_id=camp_id)
+    data = serializers.serialize('json', actual_list)
+    #data = serializers.serialize('json', [singleObject])
+    return HttpResponse(data, mimetype='application/json')
+
+def getTypes(request):
+    type_list = Type.objects.all()
+    data = serializers.serialize('json',type_list)
+    return HttpResponse(data, mimetype='application/json')    
+
+def getProducts(request):
+    prod_list = Product.objects.all()
+    data = serializers.serialize('json',prod_list)
+    return HttpResponse(data, mimetype='application/json')    
+
+def getChannels(request):
+    channel_list = Type.objects.all()
+    data = serializers.serialize('json',channel_list)
+    return HttpResponse(data, mimetype='application/json')    
+
+def getReps(request):
+    rep_list = Rep.objects.all()
+    data = serializers.serialize('json',rep_list)
+    return HttpResponse(data, mimetype='application/json')    
+
+def getCPs(request):
+    cp_list = CP.objects.all()
+    data = serializers.serialize('json',cp_list)
+    return HttpResponse(data, mimetype='application/json')    
 
 def calculatorView(request):
     if request.method == 'POST':

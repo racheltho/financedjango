@@ -8,6 +8,41 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+/* Added by Rachel from styles.css */
+#header {
+	padding-top: 5px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #AAAAAA;
+}
+
+#sidebar {
+	position: absolute;
+	left: 10px;
+	top: 80px;
+	bottom: 20px;
+	width: 260px;
+	border:solid 1px #CCCCCC;
+	overflow-y: scroll;
+}
+
+#content {
+    position: absolute;
+   	top: 80px;
+   	bottom: 20px;
+   	left:300px;
+   	right:20px;
+}
+
+.form-left-col {
+	width:310px;
+    float: left;
+}
+
+.form-right-col {
+}
+
+
+
 article,
 aside,
 details,

@@ -11,17 +11,39 @@ function MyCtrl2() {
 MyCtrl2.$inject = [];
 
 
+function CreateCampCtrl($scope,$http){
+	$http.get('types').success(function(data) {
+		$scope.types = data;
+	});
+	$scope.orderProp = 'fields.type';
+	$http.get('products').success(function(data) {
+		$scope.products = data;
+	});	
+	$http.get('channels').success(function(data) {
+		$scope.channels = data;
+	});	
+	$http.get('reps').success(function(data) {
+		$scope.reps = data;
+	});	
+	$http.get('CPs').success(function(data) {
+		$scope.CPs = data;
+	});	
+}
 
 
-function CampListCtrl($scope, $http) {
-	$http.get('/media/javascript/campaign.json').success(function(data) {
+function CampListCtrl($scope, $http){ /*, $location) { */
+	$http.get('campaigns').success(function(data) {
 		$scope.campaigns = data;
 	});
 	$scope.orderProp = 'fields.campaign';
+/*	$scope.createCampaign = function(){
+		$location.path('create'); 
+		$scope.apply(); 
+   } */
  }
  
 function CampActualCtrl($scope, $routeParams, $http){
-	$http.get('/media/json/actual' + $routeParams.campaignId + '.json').success(function(data) {
+	$http.get('campaigns/' + $routeParams.campaignId).success(function(data) {
     	$scope.actuals = data;
   	});
   	$scope.orderProp = 'fields.date';
@@ -30,7 +52,6 @@ function CampActualCtrl($scope, $routeParams, $http){
       alert('Hello ' + (name || 'world') + '!');
   };
 }
-
 
 
 /*

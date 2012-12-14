@@ -7,6 +7,14 @@ admin.autodiscover()
 
 urlpatterns = patterns('FinanceDjango.views',
     # Examples:
+    ('^media/html/campaigns$', 'getCampaigns'),
+    ('^media/html/campaigns/(\d+)$', 'getActuals'),    
+    ('^media/html/types$', 'getTypes'),          
+    ('^media/html/products$', 'getProducts'),
+    ('^media/html/channels$', 'getChannels'),      
+    ('^media/html/reps$', 'getReps'),
+    ('^media/html/CPs$', 'getCPs'),             
+    
     ('^$', 'hello'),
     ('^learning/$', 'learning'),       
     ('^time/$', 'current_datetime'),

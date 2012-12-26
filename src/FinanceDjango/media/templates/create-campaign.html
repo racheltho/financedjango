@@ -1,35 +1,25 @@
-
-<form name="form" class="css-form" novalidate>
-      Campaign:
-        <input type="text" ng-model="campaign.campaign" name="cCampaign" required /><br />
-      Type:
-      	<select ng-model="type" ng-options="type.fields.id as type.fields.type for type in types"></select> <br>
-      Product:
-      	<select ng-model="product" ng-options="product.fields.id as product.fields.product for product in products"></select> <br>
-      Channel:
-      	<select ng-model="channel" ng-options="channel.fields.id as channel.fields.channel for channel in channels"></select> <br>
-      Rep:
-      	<select ng-model="rep" ng-options="rep.fields.id as rep.fields.last_name for rep in reps"></select> <br>
-      CPA/CPM:
-      	<select ng-model="cp" ng-options="cp.fields.id as cp.fields.cp for cp in CPs"></select> <br>
-      </form>
+<form class="form-horizontal">
+  <div class="control-group">	
+ <label class="control-label" for="campaign"> Campaign: </label>
+    <div class="controls">
+      <input type="text" id="inputEmail" placeholder="Email">
+    </div>
+  </td><td>
+      <input ui-select2="version3campaign" ng-model="Campaign.campaign" /> </td></tr>
+        <!-- <select ui-select2="version3campaign" ng-model="campaign" style="width:200px" name="cCampaign" required></select> --><br>
+<tr> <td>  Type: </td><td>
+      	<!-- <select ui-select2="version3" ng-model="type" style="width:200px" 
+      	ng-options="type.fields.id as type.fields.type for type in types"></select>  -->
+      <input ui-select2="version3type" ng-model="Campaign.type"  /> </td></tr>
+<!--      	<select ng-model="type" ng-options="type.fields.id as type.fields.type for type in types"></select> <br> -->
+<tr> <td> Product: </td><td>
+      <input ui-select2="version3product" ng-model="Campaign.product"  /> </td></tr>
+<tr> <td> Channel: </td><td>
+      <input ui-select2="version3channel" ng-model="Campaign.channel" /> </td></tr>
+<tr> <td> Rep: </td><td>
+      <input ui-select2="version3rep" ng-model="Campaign.rep"  /> </td></tr>
+<tr> <td> CPA/CPM: </td><td>
+      <input ui-select2="version3CP" ng-model="Campaign.cp" /> </td></tr>
+</table>
       
- <!--     
-        <input type="email" ng-model="campaign" name="cType" required/><br />
-      <div ng-show="form.uEmail.$dirty && form.uEmail.$invalid">Invalid:
-        <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
-        <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
-      </div>
-   
-      Gender: <input type="radio" ng-model="user.gender" value="male" />male
-      <input type="radio" ng-model="user.gender" value="female" />female<br />
-   
-      <input type="checkbox" ng-model="user.agree" name="userAgree" required />
-      I agree: <input ng-show="user.agree" type="text" ng-model="user.agreeSign"
-                ng-model-instant required /><br />
-      <div ng-show="!user.agree || !user.agreeSign">Please agree and sign.</div> 
-
-
-{{c.fields.campaign}}</a> </td> <td>{{c.fields.type}} </td><td>{{c.fields.product}} </td><td>{{c.fields.channel}}</td>
-<td> {{c.fields.advertiser}} </td> <td>{{c.fields.repId}} </td><td>{{c.fields.cp}} </td><td>{{c.fields.start_date}}</td><td>{{c.fields.end_date}}</td>
-<td> {{c.fields.cpm_price}} </td> <td>{{c.fields.contracted_impr}} </td><td>{{c.fields.contracted_deal}} </td><td>{{c.fields.revised_deal}}</td>-->
+<button ng:click="save()" class="btn"> Create Campaign </button>

@@ -1,30 +1,32 @@
-<!DOCTYPE HTML>
-<html xmlns:ng="http://angularjs.org">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" ng-app="myApp">
 <head>
-<title>Angular Cellar</title>
-<link rel="stylesheet" href="css/styles.css" />
+  <meta charset="utf-8">
+  <title> Quantcast </title>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="/media/javascript/learningJQuery.js"></script>
+
 </head>
- 
-<body ng:controller="CampListCtrl">
- 
-<div id="header">
-    Quantcast Campaigns
-    <button ng:click="addCampaign()">New Campaign</button>
-    <button ng:click="copyCampaign()">Copy Existing Campaign</button>
-</div>
- 
-<div id="sidebar">
-    <ng:include src="'/media/templates/campaign-list-sidebar.html'"></ng:include>
-</div>
- 
-<div id="content">
-    <ng:view></ng:view>
-</div>
- 
-<script src="lib/angular-0.9.19.min.js" ng:autobind></script>
-<script src="js/services.js"></script>
-<script src="js/controllers.js"></script>
- 
+
+<body>
+<h2>This is a heading</h2>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+<button>Click me</button>
+
+<div id="p1" style="background-color:#D94A38;width:120px;height:20px;padding:40px;">Mouse Over Me</div>
+
+Name: <input type="text" name="fullname"><br>
+Email: <input type="text" name="email">
+
+<p id="test1">This is a paragraph.</p>
+<p id="test2">This is another paragraph.</p>
+<p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button>
+	
 </body>
- 
+
 </html>

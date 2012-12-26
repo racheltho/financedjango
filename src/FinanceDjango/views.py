@@ -14,43 +14,52 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext, Context
 
 from django.core import serializers
+from django.utils import simplejson
 import string
-
+        
 def getCampaigns(request):
     campaign_list = Campaign.objects.all()
-    data = serializers.serialize('json',campaign_list)
-    return HttpResponse(data, mimetype='application/json')
+    conv = [dict(id= o.id, text= o.campaign) for o in campaign_list ]
+    return HttpResponse(simplejson.dumps(conv), mimetype='application/json')    
     
 def getActuals(request, camp_id):       
     actual_list = Actual.objects.filter(campaign_id=camp_id)
     data = serializers.serialize('json', actual_list)
-    #data = serializers.serialize('json', [singleObject])
-    return HttpResponse(data, mimetype='application/json')
+    return HttpResponse(data, mimetype='application/json') 
 
 def getTypes(request):
     type_list = Type.objects.all()
-    data = serializers.serialize('json',type_list)
-    return HttpResponse(data, mimetype='application/json')    
+    conv = [dict(id= o.id, text= o.type) for o in type_list ]
+    return HttpResponse(simplejson.dumps(conv), mimetype='application/json')    
 
 def getProducts(request):
     prod_list = Product.objects.all()
-    data = serializers.serialize('json',prod_list)
-    return HttpResponse(data, mimetype='application/json')    
+    conv = [dict(id= o.id, text= o.product) for o in prod_list ]
+    return HttpResponse(simplejson.dumps(conv), mimetype='application/json')    
+#    data = serializers.serialize('json',prod_list)
+#    return HttpResponse(data, mimetype='application/json')    
+
 
 def getChannels(request):
-    channel_list = Type.objects.all()
-    data = serializers.serialize('json',channel_list)
-    return HttpResponse(data, mimetype='application/json')    
+    channel_list = Channel.objects.all()
+    conv = [dict(id= o.id, text= o.channel) for o in channel_list ]
+    return HttpResponse(simplejson.dumps(conv), mimetype='application/json')    
+#    data = serializers.serialize('json',channel_list)
+#    return HttpResponse(data, mimetype='application/json')    
 
 def getReps(request):
     rep_list = Rep.objects.all()
-    data = serializers.serialize('json',rep_list)
-    return HttpResponse(data, mimetype='application/json')    
+    conv = [dict(id= o.id, text= o.name()) for o in rep_list ]
+    return HttpResponse(simplejson.dumps(conv), mimetype='application/json')    
+#    data = serializers.serialize('json',rep_list)
+#    return HttpResponse(data, mimetype='application/json')    
 
 def getCPs(request):
     cp_list = CP.objects.all()
-    data = serializers.serialize('json',cp_list)
-    return HttpResponse(data, mimetype='application/json')    
+    conv = [dict(id= o.id, text= o.cp) for o in cp_list ]
+    return HttpResponse(simplejson.dumps(conv), mimetype='application/json')    
+#    data = serializers.serialize('json',cp_list)
+#    return HttpResponse(data, mimetype='application/json')    
 
 def calculatorView(request):
     if request.method == 'POST':

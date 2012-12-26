@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myFilters']).
+angular.module('myApp', ['ui','myFilters']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/campaigns', {templateUrl: '/media/templates/campaign-list.html', controller: CampListCtrl});
     $routeProvider.when('/campaigns/:campaignId', {templateUrl: '/media/templates/campaign-detail.html', controller: CampActualCtrl});

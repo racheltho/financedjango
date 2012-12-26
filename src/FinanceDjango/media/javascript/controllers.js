@@ -12,22 +12,55 @@ MyCtrl2.$inject = [];
 
 
 function CreateCampCtrl($scope,$http){
+	$scope.save = function() {
+    	$http.put('/save.py', $scope.Campaign);
+  	};
+	$http.get('campaigns').success(function(data) {
+		$scope.campaigns = data;
+		angular.extend($scope.version3campaign.data, data);
+	});
 	$http.get('types').success(function(data) {
 		$scope.types = data;
+		angular.extend($scope.version3type.data, data);
 	});
+	
 	$scope.orderProp = 'fields.type';
+	
 	$http.get('products').success(function(data) {
 		$scope.products = data;
+		angular.extend($scope.version3product.data, data);
 	});	
 	$http.get('channels').success(function(data) {
 		$scope.channels = data;
+		angular.extend($scope.version3channel.data, data);
 	});	
 	$http.get('reps').success(function(data) {
 		$scope.reps = data;
+		angular.extend($scope.version3rep.data, data);
 	});	
 	$http.get('CPs').success(function(data) {
 		$scope.CPs = data;
+		angular.extend($scope.version3CP.data, data);
 	});	
+	$scope.version3type = {
+    	data: []
+  	};	
+	$scope.version3campaign = {
+    	data: []
+  	};		
+  	$scope.version3product = {
+    	data: []
+  	};	
+	$scope.version3channel = {
+    	data: []
+  	};		
+  	$scope.version3rep = {
+    	data: []
+  	};	
+	$scope.version3CP = {
+    	data: []
+  	};		
+  	
 }
 
 

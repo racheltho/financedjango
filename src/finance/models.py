@@ -35,10 +35,11 @@ class Rep(models.Model):
     department = models.ForeignKey(Dept, null=True, blank=True)
     channel = models.ForeignKey(Channel, null=True, blank=True)
     manager = models.ForeignKey('self', null=True, blank=True)
+    def name(self):
+        return u"%s, %s" % (self.last_name, self.first_name)
     class Meta:
         ordering = ["last_name"]
     def __unicode__(self):
-        #return self.repID
         return u"%s, %s" % (self.last_name, self.first_name)
 
 
